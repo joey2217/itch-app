@@ -4,11 +4,14 @@ import { useRecoilValue, useRecoilState } from 'recoil'
 import { getPurchasesInfo, getUserInfo, Purchase } from '../api'
 import { Button, Card, Descriptions } from 'antd'
 
-const oauthUrl =
-  'https://itch.io/user/oauth?client_id=cdc8ea1c81cbc40d3bde07b162047093&scope=profile%3Ame&response_type=token&redirect_uri=http%3A%2F%2F127.0.0.1%3A5173%2Fauth'
+const redirect_uri = `${window.location.origin}/auth`
 
-// const GAME_ID = '1821866'
-const GAME_ID = '1821952'
+const oauthUrl = `https://itch.io/user/oauth?client_id=cdc8ea1c81cbc40d3bde07b162047093&scope=profile%3Ame&response_type=token&redirect_uri=${encodeURIComponent(
+  redirect_uri
+)}`
+
+const GAME_ID = '1821866'
+// const GAME_ID = '1821952'
 
 const Home: React.FC = () => {
   const token = useRecoilValue(tokenState)
